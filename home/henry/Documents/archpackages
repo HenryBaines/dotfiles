@@ -38,7 +38,7 @@
 - pavucontrol (volume)			- pavucontrol
 - timeshift (AUR) (uninstalled, buggy)	- timeshift-gtk (sudo)
 - arandr (xrandr gui utility, temporary)- arandr			https://wiki.archlinux.org/title/Xrandr
-- seahorse (NOT USED, keyring GUI)	- seahorse
+- seahorse (keyring GUI)		- seahorse
 - tlpui (NOT USED, GUI for tlp)		- tlpui
 - shutter (NOT USED, screenshot utility)- shutter			https://wiki.archlinux.org/title/Screen_capture
 - flameshot (qt5, screenshot utility)	- flameshot gui
@@ -80,8 +80,8 @@
 - linux-lts (stable but older kernel)					https://wiki.archlinux.org/title/System_maintenance#Upgrading_the_system	https://unix.stackexchange.com/questions/581455/how-to-add-entry-for-a-new-kernel-in-the-bootloader-config-file
 - polkit (priviledges management policy)				https://wiki.archlinux.org/title/Polkit
 - lxsession-gtk3 (provides graphical password prompt, start with /usr/bin/lxpolkit &)	
-- gnome-keyring (NOT USED)		- secret-tool, gnome-keyring-query
-- libsecret (NOT USED)			- lssecret
+- gnome-keyring (some apps needs it)	- secret-tool			https://wiki.archlinux.org/title/GNOME/Keyring
+- libsecret (for git authentication)	- lssecret
 - xf86-input-wacom (drivers for wacom tablet)				https://wiki.archlinux.org/title/Graphics_tablet
 - spice-vdagent (enable clipboard sharing with virt manager)
 - gamemode (improve game performance)					https://wiki.archlinux.org/title/Gamemode		
