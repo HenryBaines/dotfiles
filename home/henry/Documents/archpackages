@@ -177,3 +177,5 @@ How to change default Kernel at boot					https://itsfoss.com/switch-kernels-arch
 Optimize system for gaming						https://wiki.archlinux.org/title/gaming
 
 If file manager takes 25 seconds to start, see				https://bbs.archlinux.org/viewtopic.php?id=286096
+
+For dotfiles management with Git, see arch wiki or			https://mitxela.com/projects/dotfiles_management

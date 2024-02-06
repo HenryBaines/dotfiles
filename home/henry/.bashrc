@@ -370,19 +370,21 @@ alias logout="qtile cmd-obj -o cmd -f shutdown"
 alias task="btm -b"
 alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=/"
 
+
 ### CHEATSHEET ###
 
 echo "USEFUL ALIASES & COMMANDS:
-------------------------------------------------------------------------------------------------
-update		To update the system		|	i		For system information
-clean		To clean the system		|	c		To clear the terminal
-backup		To backup to Samsund SSD	|	nmtui		Network management
-lock		To lock the screen		|	task		Task manager
-dotfiles	Git repository for config files	|	speedtest	Tests internet speed
-reboot		Reboots the PC			|	tldr [command]	For quick [command] info
-poweroff	Turns PC off			|	z [directory]	To jump to [directory]
-------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------
+|  update    To update the system    |  i          For system information    |  dotfiles             Git repo of config files       |
+|  clean     To clean the system     |  c          To clear the terminal     |  dotfiles add [file]  Adds a modified or new [file]  |
+|  backup    To backup to SSD        |  nmtui      Network management        |  dotfiles commit      Commits changes locally        |
+|  lock      To lock the screen      |  task       Task manager              |  dotfiles push        Push changes to GitHub         |
+|  logout    To log out of Qtile     |  speedtest  Tests internet speed      |  dotfiles status      Shows uncommitted changes      |
+|  reboot    Reboots the PC          |  tldr [cmd] For quick [cmd] info      |  dotfiles ls-files    List all tracked files         |
+|  poweroff  Turns PC off            |  z [dir]    To jump to [dir]          |                                                      |
+-------------------------------------------------------------------------------------------------------------------------------------
 "
+
 
 ### LOAD ZOXIDE CONFIGURATION ###
 
