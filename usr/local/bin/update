@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# update only pacman packages
+sudo pacman -Syu
+
+# update AUR and pacman packages - AUR UNINSTALLED
+# yay -Syu 
+
+# update flatpaks
+sudo flatpak update 
+
+# create a list of explicitly installed packages through pacman
+sudo pacman -Qqetn > /home/henry/Documents/pkglist.txt
+
+# create a list of explicitly installed forein packages
+sudo pacman -Qqem > /home/henry/Documents/foreingpkglist.txt
+
+# backup the pacman database locally
+tar -cjf /home/henry/pacman_database.tar.bz2 /var/lib/pacman/local
