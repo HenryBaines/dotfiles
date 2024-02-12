@@ -109,13 +109,14 @@ autorandr -c
 xinput --map-to-output 'ELAN901C:00 04F3:2C4E' eDP1 &
 
 
-### START QTILE WINDOW MANAGER
-
-qtile start
-
-
 ### STARTS KEYRING AND SECRETS
 ## Can be placed before or after qtile start, needed for GIT integration, packages: gnome-keyring, libsecret
 
 dbus-update-activation-environment --all
 gnome-keyring-daemon --start --components=secrets
+
+
+### START QTILE WINDOW MANAGER
+
+qtile start
+
