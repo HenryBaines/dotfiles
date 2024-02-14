@@ -59,6 +59,7 @@
 - dunst (minimal notification server, remember to create dbus service)	https://dunst-project.org
 - insync (UNINSTALLED cloud storage client, for Google Drive, AUR)	https://wiki.archlinux.org/title/Insync
 - insync-nemo (UNINSTALLED insync plugin for Nemo file manager, AUR)
+- network-manager-applet (systray icon for NetworkManager)		https://wiki.archlinux.org/title/NetworkManager#nm-applet
 
 	ESSENTIAL COMPONENTS:		
 

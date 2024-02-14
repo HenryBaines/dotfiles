@@ -83,10 +83,15 @@ fi
 #############################################
 
 
-### SET WALLPAPER AND STARTS VARIETY
+### SETS WALLPAPER AND START VARIETY
 
 nitrogen --restore &
 variety &
+
+
+### START NETWORK MANAGER APPLET
+
+nm-applet --indicator &
 
 
 ### SET KEYBOARD AND GRAPHICS
