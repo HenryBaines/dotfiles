@@ -26,6 +26,7 @@ man-pages
 nano
 nemo-fileroller
 neofetch
+network-manager-applet
 otf-font-awesome
 pacman-contrib
 pamixer
