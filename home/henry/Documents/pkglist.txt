@@ -42,6 +42,7 @@ sof-firmware
 speedtest-cli
 tldr
 tlp
+tree
 ttf-font-awesome
 unclutter
 variety
