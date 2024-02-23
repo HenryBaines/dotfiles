@@ -358,6 +358,7 @@ unset bash_prompt
 
 ### ALIASES ###
 
+alias ls="ls -l"
 alias i="neofetch"
 #alias update="yay -Syu && sudo flatpak update && yay -Qtdq | yay -Rns - && yay -Qqd | yay -Rsu -"
 alias backup="	backupsystem 

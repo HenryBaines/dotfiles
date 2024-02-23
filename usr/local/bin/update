@@ -16,4 +16,4 @@ sudo pacman -Qqetn > /home/henry/Documents/pkglist.txt
 sudo pacman -Qqem > /home/henry/Documents/foreingpkglist.txt
 
 # backup the pacman database locally
-tar -cjf /home/henry/pacman_database.tar.bz2 /var/lib/pacman/local
+tar -cjf /home/henry/.pacman_database.tar.bz2 /var/lib/pacman/local
