@@ -382,7 +382,7 @@ echo "USEFUL ALIASES & COMMANDS:
 |  lock      To lock the screen      |  task       Task manager              |  dotfiles push        Push changes to GitHub         |
 |  logout    To log out of Qtile     |  speedtest  Tests internet speed      |  dotfiles status      Shows uncommitted changes      |
 |  reboot    Reboots the PC          |  tldr [cmd] For quick [cmd] info      |  dotfiles ls-files    List all tracked files         |
-|  poweroff  Turns PC off            |                                       |                                                      |
+|  poweroff  Turns PC off            |  tree       Display directory tree    |                                                      |
 -------------------------------------------------------------------------------------------------------------------------------------
 "
 
