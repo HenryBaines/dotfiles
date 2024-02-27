@@ -49,6 +49,7 @@ variety
 vlc
 wimlib
 wmctrl
+xf86-input-wacom
 xf86-video-intel
 xf86-video-vesa
 xorg-bdftopcf
