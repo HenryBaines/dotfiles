@@ -31,6 +31,7 @@
 - cronie (NOT USED, utility to manager cron jobs)			https://wiki.archlinux.org/title/cron
 - p7zip (utility to manage .zip files)					https://wiki.archlinux.org/title/Archiving_and_compression
 - rsync (copy tool, used as backup utility)				https://wiki.archlinux.org/title/rsync
+- tree (ls utility to visualize sub-directory tree)
 
 	GUI UTILITIES:
 
