@@ -190,7 +190,7 @@ screens = [
                         length=bar.STRETCH,
                 ),
                 widget.Net(
-                        format=' {down}     {up}',
+                        format=' {down:.0f}{down_suffix}     {up:.0f}{up_suffix}',
                         foreground='#ffb86c',
                 ),
                 widget.CPU(
@@ -200,6 +200,7 @@ screens = [
                 widget.Memory(
                         fmt=' {}',
                         foreground='#ffb86c',
+                        measure_mem='G',
                 ),
                 widget.Systray(
                         foreground='#f8f8f2',
@@ -283,7 +284,7 @@ screens = [
                         length=bar.STRETCH,
                 ),
                 widget.Net(
-                        format=' {down}     {up}',
+                        format=' {down:.0f}{down_suffix}     {up:.0f}{up_suffix}',
                         foreground='#ffb86c',
                 ),
                 widget.CPU(
@@ -293,6 +294,7 @@ screens = [
                 widget.Memory(
                         fmt=' {}',
                         foreground='#ffb86c',
+                        measure_mem='G',
                 ),
                 widget.Volume(
                         fmt='  {}',
