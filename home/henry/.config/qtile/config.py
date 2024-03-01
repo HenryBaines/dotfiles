@@ -201,6 +201,7 @@ screens = [
                         fmt=' {}',
                         foreground='#ffb86c',
                         measure_mem='G',
+                        format='{MemUsed:.1f}{mm}/{MemTotal:.1f}{mm}',
                 ),
                 widget.Systray(
                         foreground='#f8f8f2',
@@ -295,6 +296,7 @@ screens = [
                         fmt=' {}',
                         foreground='#ffb86c',
                         measure_mem='G',
+                        format='{MemUsed:.1f}{mm}/{MemTotal:.1f}{mm}',
                 ),
                 widget.Volume(
                         fmt='  {}',
