@@ -146,8 +146,8 @@ layouts = [
 ]
 
 widget_defaults = dict(
-    font="sans",
-    fontsize=12,
+    font="cantarell bold",
+    fontsize=14,
     padding=6,
 )
 extension_defaults = widget_defaults.copy()
@@ -183,9 +183,10 @@ screens = [
                         length=bar.STRETCH,
                 ),
                 widget.Clock(
-                        format="%a %H:%M %p %d/%m/%Y",
+                        format="%H:%M - %a %d/%m/%y",
+                        ### DATETIME CODES CAN BE FOUND AT BOTTOM OF PAGE https://docs.python.org/3/library/datetime.html#strftime-strptime-behavior
                         foreground='#f8f8f2',
-                ),
+                        ),
                 widget.Spacer(
                         length=bar.STRETCH,
                 ),
@@ -239,7 +240,7 @@ screens = [
 #			background='#6272a4',
 #               ),
             ],
-            24,
+            26,
 	    background="#282a36",
             border_width=[2, 2, 2, 2],  # Draw top and bottom borders
             border_color="#6272a4", 
@@ -278,9 +279,10 @@ screens = [
                         length=bar.STRETCH,
                 ),
                 widget.Clock(
-                        format="%a %H:%M %p %d/%m/%Y",
+                        format="%H:%M - %a %d/%m/%y",
+                        ### DATETIME CODES CAN BE FOUND AT BOTTOM OF PAGE https://docs.python.org/3/library/datetime.html#strftime-strptime-behavior
                         foreground='#f8f8f2',
-                ),
+                        ),
                 widget.Spacer(
                         length=bar.STRETCH,
                 ),
@@ -331,10 +333,10 @@ screens = [
 #			 background='#6272a4',
 #                ),
             ],
-            24,
+            26,
             background="#282a36",
             border_width=[2, 2, 2, 2],  # Draw top and bottom borders
-            border_wcolor="#6272a4",
+            border_color="#6272a4",
             opacity=0.9,
             margin=0, 			# The padding between bar and windows
                    ),
