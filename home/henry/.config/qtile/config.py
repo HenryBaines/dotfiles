@@ -191,18 +191,19 @@ screens = [
                         length=bar.STRETCH,
                 ),
                 widget.Net(
-                        format=' {down:.0f}{down_suffix}     {up:.0f}{up_suffix}',
+                        format='{down:.1f}  {down_suffix}  {up:.1f}',
+                        prefix='M',
                         foreground='#ffb86c',
                 ),
                 widget.CPU(
-                        format='  {load_percent} %',
+                        format=' {load_percent:.0f}%',
                         foreground='#ffb86c',
                 ),
                 widget.Memory(
-                        fmt=' {}',
+                        fmt='{}',
                         foreground='#ffb86c',
                         measure_mem='G',
-                        format='{MemUsed: .1f}{mm}/{MemTotal: .1f}{mm}',
+                        format='{MemUsed: .1f}{mm}/{MemTotal:.1f}{mm}',
                 ),
                 widget.Systray(
                         foreground='#f8f8f2',
@@ -287,18 +288,19 @@ screens = [
                         length=bar.STRETCH,
                 ),
                 widget.Net(
-                        format=' {down:.0f}{down_suffix}     {up:.0f}{up_suffix}',
+                        format='{down:.1f}  {down_suffix}  {up:.1f}',
+                        prefix='M',
                         foreground='#ffb86c',
                 ),
                 widget.CPU(
-                        format='  {load_percent} %',
+                        format=' {load_percent:.0f}%',
                         foreground='#ffb86c',
                 ),
                 widget.Memory(
                         fmt=' {}',
                         foreground='#ffb86c',
                         measure_mem='G',
-                        format='{MemUsed: .1f}{mm}/{MemTotal: .1f}{mm}',
+                        format='{MemUsed: .1f}{mm}/{MemTotal:.1f}{mm}',
                 ),
                 widget.Volume(
                         fmt='  {}',
