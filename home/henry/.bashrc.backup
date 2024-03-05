@@ -1,28 +1,64 @@
-#!/bin/bash
+#	+-----------------------------------+-----------------------------------+
+##	|                                                                       |
+##	|                            FANCY BASH PROMT                           |
+##	|                                                                       |
+##	| Copyright (c) 2018, Andres Gongora <mail@andresgongora.com>.          |
+##	|                                                                       |
+##	| This program is free software: you can redistribute it and/or modify  |
+##	| it under the terms of the GNU General Public License as published by  |
+##	| the Free Software Foundation, either version 3 of the License, or     |
+##	| (at your option) any later version.                                   |
+##	|                                                                       |
+##	+-----------------------------------------------------------------------+
+##
+##	DESCRIPTION:
+##	This script updates your "PS1" environment variable to display colors.
+##	Addicitionally, it also shortens the name of your current part to maximum
+##	25 characters, which is quite useful when working in deeply nested folders.
+##
+##	FUNCTIONS:
+##
+##	* bash_prompt_command()
+##	  This function takes your current working directory and stores a shortened
+##	  version in the variable "NEW_PWD".
+##
+##	* format_font()
+##	  A small helper function to generate color formating codes from simple
+##	  number codes (defined below as local variables for convenience).
+##
+##	* bash_prompt()
+##	  This function colorizes the bash promt. The exact color scheme can be
+##	  configured here. The structure of the function is as follows:
+##		1. A. Definition of available colors for 16 bits.
+##		1. B. Definition of some colors for 256 bits (add your own).
+##		2. Configuration >> EDIT YOUR PROMT HERE<<.
+##		4. Generation of color codes.
+##		5. Generation of window title (some terminal expect the first
+##		   part of $PS1 to be the window title)
+##		6. Formating of the bash promt ($PS1).
+##
+##	* Main script body:	
+##	  It calls the adequate helper functions to colorize your promt and sets
+##	  a hook to regenerate your working directory "NEW_PWD" when you change it.
+## 
 
 
-#=================================================================================================================================#
-###	FANCY BASH PROMPT SCRIPT ORIGINALLY TAKEN FROM ANDRES GONGORA https://github.com/andresgongora/synth-shell-prompt	###
-#=================================================================================================================================#
 
 
+################################################################################
+##  FUNCTIONS                                                                 ##
+################################################################################
 
-###	FUNCTIONS	###								
-#=========================#
-
-											
-##	bash_prompt_command()	##
-#--------------------------------#
-
-#	This function takes your current working directory and stores a shortened version in the variable "NEW_PWD".
-#		* The home directory (HOME) is replaced with a ~
-#		* The last pwdmaxlen characters of the PWD are displayed
-#		* Leading partial directory names are striped off
-#			/home/me/stuff -> ~/stuff (if USER=me)
-#			/usr/share/big_dir_name -> ../share/big_dir_name (if pwdmaxlen=20)
-#	Original source: WOLFMAN'S color bash promt
-#	https://wiki.chakralinux.org/index.php?title=Color_Bash_Prompt#Wolfman.27s
-
+##	ARRANGE $PWD AND STORE IT IN $NEW_PWD
+##	* The home directory (HOME) is replaced with a ~
+##	* The last pwdmaxlen characters of the PWD are displayed
+##	* Leading partial directory names are striped off
+##		/home/me/stuff -> ~/stuff (if USER=me)
+##		/usr/share/big_dir_name -> ../share/big_dir_name (if pwdmaxlen=20)
+##
+##	Original source: WOLFMAN'S color bash promt
+##	https://wiki.chakralinux.org/index.php?title=Color_Bash_Prompt#Wolfman.27s
+##
 bash_prompt_command() {
 	# How many characters of the $PWD should be kept
 	local pwdmaxlen=25
@@ -49,11 +85,11 @@ bash_prompt_command() {
 }
 
 
-##	format_font()	##
-#------------------------#
 
-#	A small helper function to generate color formating codes from simple number codes (defined below as local variables for convenience).
 
+##
+##	GENERATE A FORMAT SEQUENCE
+##
 format_font()
 {
 	## FIRST ARGUMENT TO RETURN FORMAT STRING
@@ -77,21 +113,16 @@ format_font()
 }
 
 
-##	bash_prompt()	##
-#------------------------#
-	
-#	This function colorizes the bash promt. The exact color scheme can be configured here. The structure of the function is as follows:
-#		1. A. Definition of font effects, available colors for 16 bit and 256 bits.
-#		2. Configuration >> EDIT YOUR PROMT HERE<<.
-#		4. Generation of color codes.
-#		5. Generation of window title (some terminal expect the first part of $PS1 to be the window title)
-#		6. Formating of the bash promt ($PS1).
 
+##
+## COLORIZE BASH PROMT
+##
 bash_prompt() {
 
-
-	## FONT EFFECTS & COLORS ##
-	#-------------------------#
+	############################################################################
+	## COLOR CODES                                                            ##
+	## These can be used in the configuration below                           ##
+	############################################################################
 	
 	## FONT EFFECT
 	local      NONE='0'
@@ -155,7 +186,20 @@ bash_prompt() {
 	local DRACULA_YELLOW="\[\033[1;38;5;229m\]"
 	
 	
-	## CHOOSE COLOR COMBINATION HERE
+	##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  
+	  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
+	##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ## 
+
+	
+	
+	##                          CONFIGURE HERE                                ##
+
+	
+	
+	############################################################################
+	## CONFIGURATION                                                          ##
+	## Choose your color combination here                                     ##
+	############################################################################
 	local FONT_COLOR_1=$BLUE_BOLD
 	local BACKGROUND_1=$BLUE
 	local TEXTEFFECT_1=$BOLD
@@ -169,12 +213,13 @@ bash_prompt() {
 	local TEXTEFFECT_3=$BOLD
 	
 	local PROMT_FORMAT=$BLUE_BOLD
-  
 
-	## CONFIGURATIONS ##
-	#------------------#
 	
-	## CONFIGURATION: ORANGEISMYFAVOURITE
+	############################################################################
+	## CONFIGURATIONS                                                         ##
+	#########################################################################  
+	
+#	CONFIGURATION: ORANGEISMYFAVOURITE
 	if [ "$HOSTNAME" = wasabi ]; then
 		FONT_COLOR_1=$L_GRAY; TEXTEFFECT_1=$BOLD
 		FONT_COLOR_2=$D_GRAY; TEXTEFFECT_2=$BOLD
@@ -183,8 +228,11 @@ bash_prompt() {
 	fi
 	
 
-	## COLOR CODES GENERATION FOR TEXT ##
-	#-----------------------------------#
+	
+	############################################################################
+	## TEXT FORMATING                                                         ##
+	## Generate the text formating according to configuration                 ##
+	############################################################################
 	
 	## CONVERT CODES: add offset
 	FC1=$(($FONT_COLOR_1+$COLOR))
@@ -215,15 +263,18 @@ bash_prompt() {
 	format_font TEXT_FORMAT_4 $FC4 $FE4 $BG4
 	
 	
-	## GENERATE PROMT SECTIONS
+	# GENERATE PROMT SECTIONS
 	local PROMT_USER=$"$TEXT_FORMAT_1 \u "
 	local PROMT_HOST=$"$TEXT_FORMAT_2 \h "
 	local PROMT_PWD=$"$TEXT_FORMAT_3 \${NEW_PWD} "
 	local PROMT_INPUT=$"$PROMT_FORMAT "
 
 
-	## COLOR CODES GENERATION FOR SEPARATOR ##
-	#----------------------------------------#
+	############################################################################
+	## SEPARATOR FORMATING                                                    ##
+	## Generate the separators between sections                               ##
+	## Uses background colors of the sections                                 ##
+	############################################################################
 	
 	## CONVERT CODES
 #	TSFC1=$(($BACKGROUND_1+$COLOR))
@@ -252,9 +303,11 @@ bash_prompt() {
 #	local SEPARATOR_3=$SEPARATOR_FORMAT_3$TRIANGLE
 
 
-	## WINDOW TITLE GENERATION ##
-	#---------------------------#
 
+	############################################################################
+	## WINDOW TITLE                                                           ##
+	## Prevent messed up terminal-window titles                               ##
+	############################################################################
 	case $TERM in
 	xterm*|rxvt*)
 		local TITLEBAR='\[\033]0;\u:${NEW_PWD}\007\]'
@@ -265,9 +318,11 @@ bash_prompt() {
 	esac
 
 
-	## BASH PROMT FORMATTING ##
-	#-------------------------#
 
+	############################################################################
+	## BASH PROMT                                                             ##
+	## Generate promt and remove format from the rest                         ##
+	############################################################################
 	PS1="$TITLEBAR\n${PROMT_USER}${SEPARATOR_1}${PROMT_HOST}${SEPARATOR_2}${PROMT_PWD}${SEPARATOR_3}${PROMT_INPUT}"
 
 	
@@ -280,43 +335,30 @@ bash_prompt() {
 
 
 
-###	MAIN SCRIPT BODY	###
-#=================================#
-
-
-##	It calls the adequate helper functions to colorize your promt and sets
-##	a hook to regenerate your working directory "NEW_PWD" when you change it.
+################################################################################
+##  MAIN                                                                      ##
+################################################################################
 
 ##	Bash provides an environment variable called PROMPT_COMMAND. 
 ##	The contents of this variable are executed as a regular Bash command 
 ##	just before Bash displays a prompt. 
 ##	We want it to call our own command to truncate PWD and store it in NEW_PWD
-
 PROMPT_COMMAND=bash_prompt_command
-
 
 ##	Call bash_promnt only once, then unset it (not needed any more)
 ##	It will set $PS1 with colors and relative to $NEW_PWD, 
 ##	which gets updated by $PROMT_COMMAND on behalf of the terminal
-
 bash_prompt
 unset bash_prompt
 
 
-
-### 	END OF FANCY BASH PROMPT	###
-#=========================================#
+### END OF FANCY BASH PROMPT ###
 
 
 
-
-### 	ALIASES 	###
-#=========================#
+### ALIASES ###
 
 alias ls="ls -l --color=auto"
-alias diff="diff --color=auto"
-alias grep="grep --color=auto"
-alias ip="ip --color=auto"
 alias i="neofetch"
 #alias update="yay -Syu && sudo flatpak update && yay -Qtdq | yay -Rns - && yay -Qqd | yay -Rsu -"
 alias backup="	backupsystem 
@@ -330,8 +372,7 @@ alias task="btm -b"
 alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=/"
 
 
-### 	CHEATSHEET 	###
-#=========================#
+### CHEATSHEET ###
 
 echo "USEFUL ALIASES & COMMANDS:
 -------------------------------------------------------------------------------------------------------------------------------------
@@ -346,21 +387,6 @@ echo "USEFUL ALIASES & COMMANDS:
 "
 
 
-### 	LOAD ZOXIDE CONFIGURATION 	###
-#=========================================#
+### LOAD ZOXIDE CONFIGURATION ###
 
 eval "$(zoxide init bash)"
-
-
-###	EXPORT LS_COLORS VARIABLE	###
-#=========================================#
-
-# 	Creating and exporing LS_COLORS global variable, using the dircolors database, the code below was creaded following the instructions on page 
-#	https://opensource.com/article/19/9/linux-terminal-colors
-#	running the following command:
-#	dircolors --bourne-shell ~/.dircolors >> ~.bashrc
-#	source ~/.bashrc
-
-
-LS_COLORS='fi=00;38;5;159:rs=0:di=01;38;5;159:ln=38;5;159:mh=00:pi=01;38;5;222:so=01;35:do=01;35:bd=01;33:cd=01;33:or=38;5;210:mi=00:su=01;38;5;212:sg=01;38;5;212:ca=00:tw=01;38;5;159:ow=01;38;5;159:st=01;38;5;159:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:';
-export LS_COLORS
