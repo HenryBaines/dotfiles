@@ -46,6 +46,7 @@ tree
 ttf-font-awesome
 unclutter
 variety
+vi
 vlc
 wimlib
 wmctrl
