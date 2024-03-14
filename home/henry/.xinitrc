@@ -59,9 +59,9 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
 fi
 
 
-################################
-### MY CODE NO LONGER IN USE ###
-################################
+###########################################
+### CODE THAT I WROTE, NO LONGER IN USE ###
+###########################################
 
 
 #bluetoothctl connect 78:05:09:14:13:A0 &
@@ -78,9 +78,9 @@ fi
 #insync start &
 
 
-#############################################
-### MY CODE THAT I AM USING AT THE MOMENT ###
-#############################################
+#################################
+### CODE THAT I WROTE, IN USE ###
+#################################
 
 
 ### SETS WALLPAPER AND START VARIETY
