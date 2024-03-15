@@ -1,0 +1,9 @@
+[user]
+	name = SpiceMaster
+	email = eb190493@outlook.com
+[core]
+	editor = vim
+[init]
+	defaultBranch = wasabi
+[credential]
+	helper = /usr/lib/git-core/git-credential-libsecret
