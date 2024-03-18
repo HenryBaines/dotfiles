@@ -5,15 +5,11 @@
 # update pacman & flatpak packages
 sudo echo '
 Performing system update...
-
 Pacman:'
 sudo pacman -Syu 
-echo '
-Flatpak:'
+echo 'Flatpak:'
 flatpak update 
-echo '
-System update complete.
-'
+echo 'System update complete.'
 
 
 ### SYSTEM CLEANUP ###
@@ -21,37 +17,27 @@ System update complete.
 echo '
 Performing system cleanup...'
 # check and remove orphaned and dropped packages
-sudo echo '
-Removing orphaned and dropped packages...'
+sudo echo 'Removing orphaned and dropped packages...'
 sudo pacman -Qtdq | sudo pacman -Rns - 2>/dev/null
 sudo pacman -Qqd | sudo pacman -Rsu - 2>/dev/null
 
 # clean older version of packages in pacman cache, leave most recent 3
-sudo echo '
-Cleaning pacman cache...'
+sudo echo 'Cleaning pacman cache...'
 sudo paccache -r
+echo 'System cleanup complete.'
 
-# limit size of system log to 50M and only keeps logs that are less than a month old
-sudo echo '
-Removing old logs...'
-sudo journalctl --vacuum-time=1month
-echo '
-System cleanup complete.
-'
+### LOCAL BACKUP ###
 
 echo '
 Backing-up system locally...'
 # create a list of explicitly installed packages and foreign packages 
-sudo echo '
-Creating list of local and foreign packages...'
+sudo echo 'Creating list of local and foreign packages...'
 echo 'Generating pkglist...'
 pacman -Qqetn > /home/henry/Documents/pkglist.txt
 echo 'Generating foreignpkglist...'
 pacman -Qqem > /home/henry/Documents/foreignpkglist.txt
 
 # backup the pacman database locally
-sudo echo '
-Backing-up pacman database...'
+sudo echo 'Backing-up pacman database...'
 tar -cjf /home/henry/.pacman_database.tar.bz2 /var/lib/pacman/local
-echo '
-Local backup complete.'
+echo 'Local backup complete.'
