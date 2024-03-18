@@ -1,19 +1,57 @@
 #!/bin/bash
 
-# update only pacman packages
-sudo pacman -Syu
+### SYSTEM UPDATE ###
 
-# update AUR and pacman packages - AUR UNINSTALLED
-# yay -Syu 
+# update pacman & flatpak packages
+sudo echo '
+Performing system update...
 
-# update flatpaks
-sudo flatpak update 
+Pacman:'
+sudo pacman -Syu 
+echo '
+Flatpak:'
+flatpak update 
+echo '
+System update complete.
+'
 
-# create a list of explicitly installed packages through pacman
-sudo pacman -Qqetn > /home/henry/Documents/pkglist.txt
 
-# create a list of explicitly installed forein packages
-sudo pacman -Qqem > /home/henry/Documents/foreingpkglist.txt
+### SYSTEM CLEANUP ###
+
+echo '
+Performing system cleanup...'
+# check and remove orphaned and dropped packages
+sudo echo '
+Removing orphaned and dropped packages...'
+sudo pacman -Qtdq | sudo pacman -Rns - 2>/dev/null
+sudo pacman -Qqd | sudo pacman -Rsu - 2>/dev/null
+
+# clean older version of packages in pacman cache, leave most recent 3
+sudo echo '
+Cleaning pacman cache...'
+sudo paccache -r
+
+# limit size of system log to 50M and only keeps logs that are less than a month old
+sudo echo '
+Removing old logs...'
+sudo journalctl --vacuum-time=1month
+echo '
+System cleanup complete.
+'
+
+echo '
+Backing-up system locally...'
+# create a list of explicitly installed packages and foreign packages 
+sudo echo '
+Creating list of local and foreign packages...'
+echo 'Generating pkglist...'
+pacman -Qqetn > /home/henry/Documents/pkglist.txt
+echo 'Generating foreignpkglist...'
+pacman -Qqem > /home/henry/Documents/foreignpkglist.txt
 
 # backup the pacman database locally
+sudo echo '
+Backing-up pacman database...'
 tar -cjf /home/henry/.pacman_database.tar.bz2 /var/lib/pacman/local
+echo '
+Local backup complete.'
