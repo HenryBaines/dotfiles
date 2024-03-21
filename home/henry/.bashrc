@@ -328,6 +328,7 @@ alias poweroff="sudo poweroff"
 alias logout="qtile cmd-obj -o cmd -f shutdown"
 alias task="btm -b"
 alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=/"
+alias sudo="sudo -E"
 
 
 ### 	CHEATSHEET 	###
