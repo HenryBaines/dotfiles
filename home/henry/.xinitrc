@@ -85,21 +85,21 @@ fi
 
 ### SETS WALLPAPER AND START VARIETY
 
-nitrogen --restore &
-variety &
+/usr/bin/nitrogen --restore &
+/usr/bin/variety &
 
 
 ### START NETWORK MANAGER APPLET
 
-nm-applet --indicator &
+/usr/bin/nm-applet --indicator &
 
 
 ### SET KEYBOARD AND GRAPHICS
 
-setxkbmap -layout gb &
-picom &
-unclutter --jitter 10 --ignore-scrolling --start-hidden --fork &
-dunst &
+/usr/bin/setxkbmap -layout gb &
+/usr/bin/picom &
+/usr/bin/unclutter --jitter 10 --ignore-scrolling --start-hidden --fork
+/usr/bin/dunst &
 
 
 ### START POLKIT AUTHENTICATION AGENT
@@ -110,15 +110,15 @@ dunst &
 ### DETECT DISPLAYS, UPDATE RESOLUTION AND TOUCHSCREEN
 ## First update resolution, then map touchscreen surface to native monitor
 
-autorandr -c &
-xinput --map-to-output 'ELAN901C:00 04F3:2C4E' eDP1 &
+/usr/bin/autorandr -c
+/usr/bin/xinput --map-to-output 'ELAN901C:00 04F3:2C4E' eDP1 &
 
 
 ### STARTS KEYRING AND SECRETS
 ## Can be placed before or after qtile start, needed for GIT integration, packages: gnome-keyring, libsecret
 
-dbus-update-activation-environment --all &
-gnome-keyring-daemon --start --components=secrets &
+dbus-update-activation-environment --all
+/usr/bin/gnome-keyring-daemon --start --components=secrets
 
 
 ### START QTILE WINDOW MANAGER
