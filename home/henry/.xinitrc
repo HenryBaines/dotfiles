@@ -94,9 +94,8 @@ fi
 /usr/bin/nm-applet --indicator &
 
 
-### SET KEYBOARD AND GRAPHICS
+### START GRAPHICS
 
-/usr/bin/setxkbmap -layout gb &
 /usr/bin/picom &
 /usr/bin/unclutter --jitter 10 --ignore-scrolling --start-hidden --fork
 /usr/bin/dunst &
@@ -121,7 +120,8 @@ dbus-update-activation-environment --all
 /usr/bin/gnome-keyring-daemon --start --components=secrets
 
 
-### START QTILE WINDOW MANAGER
+### SET KEYBOARD & START QTILE WINDOW MANAGER
 
+/usr/bin/setxkbmap -layout gb 
 qtile start
 
